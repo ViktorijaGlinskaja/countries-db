@@ -4,11 +4,24 @@ import axios from 'axios';
 import IconButton from '@mui/material/IconButton';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import TablePagination from '@mui/material/TablePagination';
 import DataTableMenu from './data-table-menu';
 
 const DataTable = () => {
     const [countries, setCountries] = useState([]);
     const [order, setOrder] = useState("asc");
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(25);
+
+    const handleChangePage = (_, newPage) => {
+        setPage(newPage);
+
+    };
+
+    const handleChangeRowsPerPage = (event) => {
+        setPage(0);
+        setRowsPerPage(parseInt(event.target.value, 10));
+    };
 
     const sorting = (col) => {
         if (order === "asc") {
@@ -56,13 +69,24 @@ const DataTable = () => {
                 </thead>
                 <tbody>
                     {
-                        countries.map((country, index) =>
-                            <tr key={index}>
-                                <td>{country.name}</td>
-                                <td>{country.region}</td>
-                                <td> {country.area}</td>
-                            </tr>)
+                        countries
+                            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                            .map((country, index) =>
+                                <tr key={index}>
+                                    <td>{country.name}</td>
+                                    <td>{country.region}</td>
+                                    <td> {country.area}</td>
+                                </tr>)
                     }
+                    <TablePagination
+                        component="div"
+                        rowsPerPageOptions={[10, 20, 25]}
+                        count={countries.length}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        rowsPerPage={rowsPerPage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                    />
                 </tbody>
             </table>
         </div>
