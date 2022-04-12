@@ -8,6 +8,14 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);  
 }
 
+.data-table .th-sort-asc::after {
+    content: "\25b4";
+  }
+  
+.data-table .th-sort-desc::after {
+    content: "\25be";
+  }
+
 .data-table thead tr {
     background-color: #009879;
     color: #ffffff;

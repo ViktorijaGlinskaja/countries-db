@@ -1,0 +1,22 @@
+.menu {
+  display: flex;
+  align-items: center;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: #009879;
+  color: #ffffff;
+  padding-left: 6px;
+  font-size: 0.8em;
+  font-weight: bolder;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media only screen and (min-width: 641px) {
+    .menu {
+      display: none;
+    }
+}
