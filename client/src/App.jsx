@@ -3,7 +3,7 @@ import DataTable from './data-table';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <header className="App-header">
         <DataTable />
       </header>
