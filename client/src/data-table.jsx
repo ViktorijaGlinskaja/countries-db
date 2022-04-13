@@ -47,6 +47,12 @@ const DataTable = () => {
             })
     }, []);
 
+    let oceaniaCountries = countries.filter(country => country.region === "Oceania")
+    console.log(oceaniaCountries);
+
+    const requiredCountryName = countries.find((country) => country.name === "Lithuania");
+    console.log(requiredCountryName.area);
+
     return (
         <div>DataTable
             <DataTableMenu order={order} setOrder={setOrder} sorting={sorting} />
