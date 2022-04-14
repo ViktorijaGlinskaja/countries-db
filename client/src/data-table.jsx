@@ -48,9 +48,6 @@ const DataTable = () => {
             })
     }, []);
 
-    const cloneCountries = [...countries]
-    console.log(cloneCountries);
-
     let oceaniaCountries = countries.filter(country => country.region === "Oceania")
     console.log(oceaniaCountries);
 
@@ -67,11 +64,6 @@ const DataTable = () => {
                 })
         }
     };
-
-    // const requiredCountryName = countries.find((country) => country.name === "Lithuania");
-    // if (requiredCountryName) {
-    //     console.log(requiredCountryName.area)
-    // }
 
     return (
         <div>
