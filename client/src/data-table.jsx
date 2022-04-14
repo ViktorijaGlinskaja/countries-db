@@ -9,6 +9,7 @@ import DataTableMenu from './data-table-menu';
 
 const DataTable = () => {
     const [countries, setCountries] = useState([]);
+    const [checked, setChecked] = useState(false);
     const [order, setOrder] = useState("asc");
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(25);
@@ -47,15 +48,40 @@ const DataTable = () => {
             })
     }, []);
 
+    const cloneCountries = [...countries]
+    console.log(cloneCountries);
+
     let oceaniaCountries = countries.filter(country => country.region === "Oceania")
     console.log(oceaniaCountries);
 
-    const requiredCountryName = countries.find((country) => country.name === "Lithuania");
-    console.log(requiredCountryName.area);
+    const handleChange = () => {
+        setChecked(!checked)
+        if (!checked) {
+            setCountries(oceaniaCountries)
+        } else {
+            axios.get('https://restcountries.com/v2/all?fields=name,region,area')
+                .then(res => {
+                    setCountries(res.data)
+                }).catch(err => {
+                    console.log(err)
+                })
+        }
+    };
+
+    // const requiredCountryName = countries.find((country) => country.name === "Lithuania");
+    // if (requiredCountryName) {
+    //     console.log(requiredCountryName.area)
+    // }
 
     return (
         <div>DataTable
             <DataTableMenu order={order} setOrder={setOrder} sorting={sorting} />
+            <div className="checkbox-container">
+                <label>
+                    <input type="checkbox" checked={checked} onChange={handleChange} />
+                    Show only Oceania region countries
+                </label>
+            </div>
             <table className='data-table'>
                 <thead>
                     <tr>
@@ -99,4 +125,4 @@ const DataTable = () => {
     )
 }
 
-export default DataTable
+export default DataTable;
