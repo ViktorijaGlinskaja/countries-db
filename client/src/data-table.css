@@ -1,3 +1,7 @@
+.table-name {
+    display:flex;
+    justify-content: center;
+}
 .data-table {
   border-collapse: collapse;
   margin-bottom: 25px;

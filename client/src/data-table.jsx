@@ -74,7 +74,8 @@ const DataTable = () => {
     // }
 
     return (
-        <div>DataTable
+        <div>
+            <h1 className="table-name">Countries database</h1>
             <DataTableMenu order={order} setOrder={setOrder} sorting={sorting} />
             <div className="checkbox-container">
                 <label>
