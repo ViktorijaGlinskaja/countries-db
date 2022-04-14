@@ -1,7 +1,7 @@
 # countries-db
 
-Install libraries
+## Install libraries
 $ npm i
 
-Start project
+## Start project
 $ npm start
